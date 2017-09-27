@@ -24,7 +24,7 @@ class Article extends Component {
 
         if (isOpen) {
             body = <section>{article.text}</section>
-            comments = <CommentsToggleBox isCollapsed={true} comments={article.comments}></CommentsToggleBox>
+            comments = <CommentsToggleBox comments={article.comments}></CommentsToggleBox>
         }
 
         return (

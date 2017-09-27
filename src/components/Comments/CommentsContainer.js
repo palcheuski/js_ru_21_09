@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CommentList from './commentList'
 import AddComment from './addComment'
 
@@ -6,6 +7,7 @@ export default class CommentsContainer extends Component {
     constructor(props) {
         super(props);
 
+        // initial state
         this.state = {
             comments: props.comments
         };
@@ -52,3 +54,8 @@ export default class CommentsContainer extends Component {
         );
     }
 }
+
+// Turn on typechecking on the props
+CommentsContainer.propTypes = {
+    comments: PropTypes.array
+};

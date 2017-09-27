@@ -1,10 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default (props) => {
-    let { placeholder = "Type your comment and press Shift+Enter", onSumbit } = props;
+// component definition
+let addComment= (props) => {
+    let { placeholder='Type your comment and press Shift+Enter', onSumbit } = props;
     let textInput = null;
 
-    function addComment() {
+    function submitComment() {
         if (textInput.value.length) {
             // compose comment info
             var newComment = {
@@ -24,12 +26,12 @@ export default (props) => {
     function handleKeyUp(event) {
         // add comment on Shift+Enter
         if (event.shiftKey && event.keyCode === 13) {
-            addComment();
+            submitComment();
         }
     }
 
     function handleClick() {
-        addComment();
+        submitComment();
     }
 
     return (
@@ -42,3 +44,11 @@ export default (props) => {
         </div>
     )
 }
+
+// Turn on typechecking on the props
+addComment.propTypes = {
+    placeholder: PropTypes.string,
+    onSumbit: PropTypes.func.isRequired
+};
+
+export default addComment

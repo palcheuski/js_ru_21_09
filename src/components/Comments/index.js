@@ -1,3 +1,4 @@
 import CommentsToggleBox from './CommentsToggleBox'
+import CommentsContainer from './CommentsContainer'
 
-export {CommentsToggleBox}
+export {CommentsToggleBox, CommentsContainer}
