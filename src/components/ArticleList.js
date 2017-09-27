@@ -24,7 +24,11 @@ class ArticleList extends Component {
     }
 
     toggleArticle = (openArticleId) => (ev) => {
-        this.setState({openArticleId})
+        this.setState(prevState=>{
+            return {
+                openArticleId: prevState.openArticleId === openArticleId ? null : openArticleId
+            };
+        })
     }
 }
 

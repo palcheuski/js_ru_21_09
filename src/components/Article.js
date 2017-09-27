@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CommentsToggleBox } from './Comments'
 
 class Article extends Component {
     static defaultProps = {
@@ -17,8 +18,15 @@ class Article extends Component {
     }
 
     render() {
-        const {article, isOpen, onButtonClick} = this.props
-        const body = isOpen && <section>{article.text}</section>
+        const { article, isOpen, onButtonClick } = this.props
+        let body = null;
+        let comments = null;
+
+        if (isOpen) {
+            body = <section>{article.text}</section>
+            comments = <CommentsToggleBox isCollapsed={true} comments={article.comments}></CommentsToggleBox>
+        }
+
         return (
             <div>
                 <h2>
@@ -29,6 +37,7 @@ class Article extends Component {
                 </h2>
                 {body}
                 <h3>creation date: {(new Date(article.date)).toDateString()}</h3>
+                {comments}               
             </div>
         )
     }
