@@ -2,6 +2,7 @@ import React, {Component, PureComponent} from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import PropTypes from 'prop-types'
 import CommentList from '../CommentList'
+import AddComment from '../AddComment'
 import {findDOMNode} from 'react-dom'
 import './style.css'
 
@@ -60,8 +61,14 @@ class Article extends PureComponent {
             <div>
                 <section>{article.text}</section>
                 <CommentList comments = {article.comments} ref = {this.setCommentsRef} key = {this.state.clicked}/>
+                <hr/>
+                <AddComment onSubmit={this.handleSubmitComment} />
             </div>
         )
+    }
+
+    handleSubmitComment = comment =>{
+        console.log("submit comment", comment);
     }
 
     setHeaderRef = header => {
